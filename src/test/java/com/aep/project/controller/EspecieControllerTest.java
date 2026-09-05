@@ -11,13 +11,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(EspecieController.class)
@@ -64,6 +66,71 @@ public class EspecieControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
             .andExpect(status().isCreated());
+    }
+
+    @Test
+    @DisplayName("Deve listar todas espécies em /GET")
+    public void listarTodasEspecies() throws Exception {
+        when(especieService.buscar(null)).thenReturn(List.of(especie));
+
+        mockMvc.perform(get("/especies"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value("1"));
+
+    }
+
+    @Test
+    @DisplayName("Deve listar espécies por nome popular em /GET")
+    public void listarEspeciesPorNomePopular() throws Exception {
+        when(especieService.buscar("Onça-Pintada")).thenReturn(List.of(especie));
+
+        mockMvc.perform(get("/especies")
+                .param("nomePopular", "Onça-Pintada"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value("1"));
+
+    }
+
+    @Test
+    @DisplayName("Deve listar espécie por Id em /GET")
+    public void listarEspeciePorId() throws Exception {
+        when(especieService.buscarPorId("1")).thenReturn(especie);
+
+        mockMvc.perform(get("/especies/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value("1"))
+                .andExpect(jsonPath("$.nomePopular").value("Ararinha-Azul"));
+    }
+
+    @Test
+    @DisplayName("Deve atualizar espécie por Id em /PUT")
+    public void atualizarEspeciePorId() throws Exception {
+        when(especieService.atualizar(any(String.class), any(Especie.class))).thenReturn(especie);
+
+        String json = """
+        {
+            "nomePopular": "Ararinha-Azul",
+            "nomeCientifico": "Cyanopsitta spixii",
+            "grupo": "AVE",
+            "bioma": "AMAZONIA",
+            "nivelRisco": "CRITICO",
+            "populacaoEstimada": 250
+        }
+        """;
+
+        mockMvc.perform(put("/especies/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value("1"))
+                .andExpect(jsonPath("$.nomePopular").value("Ararinha-Azul"));
+    }
+
+    @Test
+    @DisplayName("Deve excluir espécie por Id")
+    public void excluirEspeciePorId() throws Exception {
+        mockMvc.perform(delete("/especies/1"))
+                .andExpect(status().isNoContent());
     }
 
 }
