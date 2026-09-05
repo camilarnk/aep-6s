@@ -1,5 +1,6 @@
 package com.aep.project.controller;
 
+import com.aep.project.exception.EspecieNotFoundException;
 import com.aep.project.model.Bioma;
 import com.aep.project.model.Especie;
 import com.aep.project.model.Grupo;
@@ -131,6 +132,59 @@ public class EspecieControllerTest {
     public void excluirEspeciePorId() throws Exception {
         mockMvc.perform(delete("/especies/1"))
                 .andExpect(status().isNoContent());
+    }
+
+    @Test
+    @DisplayName("Deve retornar 400 ao criar espécie com dados inválidos")
+    public void criarEspecieComDadosInvalidos() throws Exception {
+        String json = """
+        {
+            "nomePopular": "",
+            "nomeCientifico": "",
+            "grupo": null,
+            "bioma": null,
+            "nivelRisco": null,
+            "populacaoEstimada": -1
+        }
+        """;
+
+        mockMvc.perform(post("/especies")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("Deve retornar 404 ao buscar espécie inexistente")
+    public void buscarEspecieInexistente() throws Exception {
+        when(especieService.buscarPorId("999"))
+                .thenThrow(new EspecieNotFoundException("Espécie não encontrada com id 999"));
+
+        mockMvc.perform(get("/especies/999"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.erro").value("Espécie não encontrada"))
+                .andExpect(jsonPath("$.mensagem")
+                        .value("Espécie não encontrada com id 999"));
+    }
+
+    @Test
+    @DisplayName("Deve retornar 400 ao atualizar espécie com dados inválidos")
+    public void atualizarEspecieComDadosInvalidos() throws Exception {
+        String json = """
+        {
+            "nomePopular": "",
+            "nomeCientifico": "",
+            "grupo": null,
+            "bioma": null,
+            "nivelRisco": null,
+            "populacaoEstimada": -1
+        }
+        """;
+
+        mockMvc.perform(put("/especies/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isBadRequest());
     }
 
 }
