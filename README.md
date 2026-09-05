@@ -75,6 +75,26 @@ A API estará disponível, por padrão, em:
 http://localhost:8080
 ```
 
+## 🧪 Testes
+
+O projeto possui testes automatizados utilizando JUnit 5, Mockito e MockMvc.
+
+Para executar os testes e gerar o relatório de cobertura de código com o JaCoCo::
+
+```bash
+mvn test
+```
+
+O relatório será gerado no arquivo em:
+
+```
+target/site/jacoco/index.html
+```
+
+Abra o arquivo index.html no navegador para visualizar as estatísticas de cobertura, incluindo a porcentagem de linhas, métodos e classes testadas.
+
+O projeto possui como requisito mínimo uma cobertura de 70%.
+
 ## 🔗 Principais endpoints
 
 | Método | Endpoint                    | Descrição                 |
