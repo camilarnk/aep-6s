@@ -24,44 +24,48 @@
 
     <section class="filtros">
         <select id="filtroGrupo">
-            <option value="" disabled>Grupo</option>
+            <option value="" selected disabled>Grupo</option>
         </select>
 
         <select id="filtroBioma">
-            <option value="" disabled>Bioma</option>
+            <option value="" selected disabled>Bioma</option>
         </select>
 
         <select id="filtroRisco">
-            <option value="" disabled>Nível de risco</option>
+            <option value="" selected disabled>Nível de risco</option>
         </select>
     </section>
 
     <section class="lista-especies">
-        <article class="especie">
-            <div>
-                <h2>Ararinha-Azul</h2>
-                <p>Bioma: Amazônia</p>
-                <p>Grupo: Ave</p>
-            </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome popular</th>
+                    <th>Bioma</th>
+                    <th>Grupo</th>
+                    <th>Nível de risco</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
 
-            <div>
-                <span>Crítico</span>
-                <button>Ver mais</button>
-            </div>
-        </article>
+            <tbody>
+                <tr>
+                    <td>Ararinha-Azul</td>
+                    <td>Amazônia</td>
+                    <td>Ave</td>
+                    <td> <span class="risco">Crítico</span> </td>
+                    <td> <button class="botao-ver-mais">Ver mais</button> </td>
+                </tr>
 
-        <article class="especie">
-            <div>
-                <h2>Onça-pintada</h2>
-                <p>Bioma: Amazônia</p>
-                <p>Grupo: Mamífero</p>
-            </div>
-
-            <div>
-                <span>Alto</span>
-                <button>Ver mais</button>
-            </div>
-        </article>
+                <tr>
+                    <td>Onça-pintada</td>
+                    <td>Amazônia</td>
+                    <td>Mamífero</td>
+                    <td> <span class="risco">Alto</span> </td>
+                    <td> <button class="botao-ver-mais">Ver mais</button> </td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
 </main>
