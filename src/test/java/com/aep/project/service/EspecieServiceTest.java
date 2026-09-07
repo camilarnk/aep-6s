@@ -118,7 +118,7 @@ public class EspecieServiceTest {
 
     @Test
     @DisplayName("Deve atualizar uma espécie por id")
-    public void deveAtualizarUmaEspéciePorId() {
+    public void deveAtualizarUmaEspeciePorId() {
         especie.setId("1");
 
         Especie especieAtualizada = new Especie();
