@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faunifica</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Faunifica 🐦</h1>
+    <p>Cadastro e consulta de espécies silvestres.</p>
+</header>
+
+<main>
+
+    <section class="acoes">
+        <input type="text" id="campoBusca" placeholder="Buscar espécie por nome popular...">
+        <button id="botaoNovaEspecie">+ Nova espécie</button>
+    </section>
+
+    <section class="filtros">
+        <select id="filtroGrupo">
+            <option value="" disabled>Grupo</option>
+        </select>
+
+        <select id="filtroBioma">
+            <option value="" disabled>Bioma</option>
+        </select>
+
+        <select id="filtroRisco">
+            <option value="" disabled>Nível de risco</option>
+        </select>
+    </section>
+
+    <section class="lista-especies">
+        <article class="especie">
+            <div>
+                <h2>Ararinha-Azul</h2>
+                <p>Bioma: Amazônia</p>
+                <p>Grupo: Ave</p>
+            </div>
+
+            <div>
+                <span>Crítico</span>
+                <button>Ver mais</button>
+            </div>
+        </article>
+
+        <article class="especie">
+            <div>
+                <h2>Onça-pintada</h2>
+                <p>Bioma: Amazônia</p>
+                <p>Grupo: Mamífero</p>
+            </div>
+
+            <div>
+                <span>Alto</span>
+                <button>Ver mais</button>
+            </div>
+        </article>
+    </section>
+
+</main>
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>
