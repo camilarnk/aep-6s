@@ -14,7 +14,7 @@ O Faunifica contribui de forma indireta para esse objetivo ao organizar e facili
 
 ## 💡 Prova de Conceito
 
-A primeira versão da PoC consiste em uma API REST para gerenciamento de espécies, permitindo:
+A primeira versão da PoC consiste em uma aplicação web integrada a uma API REST para gerenciamento de espécies, permitindo:
 
 * Cadastrar espécies;
 * Listar espécies cadastradas;
@@ -23,27 +23,57 @@ A primeira versão da PoC consiste em uma API REST para gerenciamento de espéci
 * Atualizar dados de uma espécie;
 * Excluir uma espécie.
 
+## 🏗️ Arquitetura
+
+* **Controller:** recebe e responde às requisições HTTP;
+* **Service:** concentra as regras e operações da aplicação;
+* **Repository:** realiza o acesso ao MongoDB;
+* **Model:** representa as entidades e enumerações utilizadas;
+* **DTO:** define os dados de entrada e saída da API;
+* **Mapper:** realiza a conversão entre DTOs e entidades;
+* **Exception:** centraliza o tratamento de exceções da aplicação.
+
 ## 🛠️ Tecnologias
 
 * Java 21
 * Spring Boot 4.1.0
 * Spring Data MongoDB
 * MongoDB 8
+* HTML, CSS e JavaScript
 * Docker
 * Maven
+* JUnit 5
+* Mockito
+* MockMvc
+* JaCoCo
 * Git e GitHub
 
 ## 🗄️ Banco de Dados
 
 O projeto utiliza o **MongoDB**, banco de dados NoSQL orientado a documentos.
 
-O MongoDB é executado através do Docker Compose. Para iniciar o banco:
+O MongoDB é executado através do Docker Compose.
 
-```bash
-docker compose up -d
+A aplicação utiliza o banco:
+
+```text
+faunifica
 ```
 
-A aplicação utiliza o banco `faunifica` e a collection `especies`.
+e a collection:
+
+```text
+especies
+```
+
+Cada documento da collection representa uma espécie e possui informações como:
+
+* nome popular;
+* nome científico;
+* grupo;
+* bioma;
+* nível de risco;
+* população estimada.
 
 ## ▶️ Execução
 
@@ -63,37 +93,95 @@ docker compose up -d
 
 ### 2. Execute a aplicação
 
-No IntelliJ IDEA ou através do Maven:
+No IntelliJ ou através do Maven:
 
 ```bash
 mvn spring-boot:run
 ```
 
-A API estará disponível, por padrão, em:
+A aplicação estará disponível, por padrão, em:
 
 ```text
 http://localhost:8080
 ```
 
-## 🧪 Testes
+O frontend pode ser acessado diretamente pelo navegador através desse endereço.
+
+## 🧪 Testes automatizados
 
 O projeto possui testes automatizados utilizando JUnit 5, Mockito e MockMvc.
 
-Para executar os testes e gerar o relatório de cobertura de código com o JaCoCo::
+Para executar os testes:
 
 ```bash
 mvn test
 ```
 
-O relatório será gerado no arquivo em:
+Ao final da execução, o Maven deve indicar que os testes foram executados com sucesso.
 
+## 📊 Cobertura de testes
+
+A cobertura de código é medida utilizando o **JaCoCo**.
+
+Após executar:
+
+```bash
+mvn test
 ```
+
+o relatório será gerado em:
+
+```text
 target/site/jacoco/index.html
 ```
 
-Abra o arquivo index.html no navegador para visualizar as estatísticas de cobertura, incluindo a porcentagem de linhas, métodos e classes testadas.
+Abra o arquivo `index.html` no navegador para visualizar as estatísticas de cobertura, incluindo linhas, métodos e classes.
 
-O projeto possui como requisito mínimo uma cobertura de 70%.
+A AEP estabelece como requisito uma cobertura mínima de **70%** sobre o código da PoC apresentado em cada entrega.
+
+Evidência da cobertura obtida nesta entrega:
+
+![Relatorio de cobertura dos testes](docs/evidencias/cobertura-jacoco.png)
+
+## 🖥️ Como testar a PoC
+
+Após iniciar o MongoDB e executar a aplicação, acesse:
+
+```text
+http://localhost:8080
+```
+
+### Cadastro
+
+1. Clique em **+ Nova espécie**.
+2. Preencha os campos solicitados.
+3. Clique em **Cadastrar espécie**.
+4. Verifique se a espécie aparece na tabela.
+
+### Pesquisa
+
+1. Digite um nome popular no campo de pesquisa.
+2. Verifique se a tabela é atualizada mostrando as espécies correspondentes.
+3. Apague o texto para voltar à listagem completa.
+
+### Consulta
+
+1. Clique em **Ver mais** em uma espécie.
+2. Verifique os dados apresentados no modal.
+
+### Atualização
+
+1. No modal de detalhes, clique em **Atualizar**.
+2. Altere um ou mais campos.
+3. Clique em **Salvar**.
+4. Verifique se os dados foram atualizados na tabela.
+
+### Exclusão
+
+1. Abra o modal de detalhes de uma espécie.
+2. Clique em **Deletar**.
+3. Confirme a exclusão.
+4. Verifique se a espécie foi removida da tabela.
 
 ## 🔗 Principais endpoints
 
@@ -105,3 +193,7 @@ O projeto possui como requisito mínimo uma cobertura de 70%.
 | GET    | `/especies/{id}`            | Consulta uma espécie      |
 | PUT    | `/especies/{id}`            | Atualiza uma espécie      |
 | DELETE | `/especies/{id}`            | Exclui uma espécie        |
+
+## 🏷️ Versões da entrega
+
+A versão correspondente à primeira entrega da AEP será identificada no repositório GitHub por uma tag específica, permitindo consultar exatamente o estado do projeto apresentado nesta etapa.
