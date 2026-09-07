@@ -205,3 +205,68 @@ main {
 .botao-fechar:hover {
     color: #315c42;
 }
+
+.modal-conteudo {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-conteudo form {
+    margin-top: 25px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.campo label {
+    margin-bottom: 7px;
+    color: #26382b;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd6cc;
+    border-radius: 7px;
+    background-color: #ffffff;
+    color: #26382b;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    outline: none;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: #315c42;
+}
+
+.campo input::placeholder {
+    color: #7a857c;
+}
+
+.campo select {
+    cursor: pointer;
+}
+
+.botao-cadastrar {
+    width: 100%;
+    padding: 13px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: #315c42;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao-cadastrar:hover {
+    background-color: #264a34;
+}
