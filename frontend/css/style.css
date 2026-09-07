@@ -158,3 +158,50 @@ main {
     background-color: #315c42;
     color: #ffffff;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-conteudo {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.modal-conteudo h2 {
+    margin-bottom: 8px;
+    color: #26382b;
+    font-size: 24px;
+}
+
+.modal-conteudo p {
+    color: #68756b;
+    font-size: 14px;
+}
+
+.botao-fechar {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    border: none;
+    background: transparent;
+    color: #68756b;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.botao-fechar:hover {
+    color: #315c42;
+}
