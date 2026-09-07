@@ -270,3 +270,52 @@ main {
 .botao-cadastrar:hover {
     background-color: #264a34;
 }
+
+.acoes-modal {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.botao-atualizar,
+.botao-deletar {
+    flex: 1;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao-atualizar {
+    border: none;
+    background-color: #315c42;
+    color: #ffffff;
+}
+
+.botao-atualizar:hover {
+    background-color: #264a34;
+}
+
+.botao-deletar {
+    border: 1px solid #b85c5c;
+    background-color: #ffffff;
+    color: #b85c5c;
+}
+
+.botao-deletar:hover {
+    background-color: #b85c5c;
+    color: #ffffff;
+}
+
+.campo input:read-only,
+.campo select:disabled {
+    background-color: #f4f6f1;
+    color: #526356;
+    cursor: default;
+}
+
+.campo input:not(:read-only),
+.campo select:not(:disabled) {
+    background-color: #ffffff;
+}

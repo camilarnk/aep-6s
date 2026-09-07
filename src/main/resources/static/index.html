@@ -124,6 +124,81 @@
     </div>
 </div>
 
+<div id="modalVerEspecie" class="modal">
+    <div class="modal-conteudo">
+
+        <button class="botao-fechar" id="botaoFecharVerEspecie">&times;</button>
+
+        <h2 id="tituloVerEspecie">Detalhes da espécie</h2>
+        <p id="subtituloVerEspecie">Informações cadastradas.</p>
+
+        <div id="dadosEspecie">
+
+            <div class="campo">
+                <label for="verNomePopular">Nome popular</label>
+                <input type="text" id="verNomePopular" readonly>
+            </div>
+
+            <div class="campo">
+                <label for="verNomeCientifico">Nome científico</label>
+                <input type="text" id="verNomeCientifico" readonly>
+            </div>
+
+            <div class="campo">
+                <label for="verGrupo">Grupo</label>
+                <select id="verGrupo" disabled>
+                    <option value="AVE">Ave</option>
+                    <option value="MAMIFERO">Mamífero</option>
+                    <option value="REPTIL">Réptil</option>
+                    <option value="ANFIBIO">Anfíbio</option>
+                    <option value="PEIXE">Peixe</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="verBioma">Bioma</label>
+                <select id="verBioma" disabled>
+                    <option value="AMAZONIA">Amazônia</option>
+                    <option value="CAATINGA">Caatinga</option>
+                    <option value="CERRADO">Cerrado</option>
+                    <option value="MATA_ATLANTICA">Mata Atlântica</option>
+                    <option value="PAMPA">Pampa</option>
+                    <option value="PANTANAL">Pantanal</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="verNivelRisco">Nível de risco</label>
+                <select id="verNivelRisco" disabled>
+                    <option value="CRITICO">Crítico</option>
+                    <option value="ALTO">Alto</option>
+                    <option value="MODERADO">Moderado</option>
+                    <option value="BAIXO">Baixo</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="verPopulacaoEstimada">População estimada</label>
+                <input type="number" id="verPopulacaoEstimada" min="0" readonly>
+            </div>
+
+        </div>
+
+        <div class="acoes-modal">
+
+            <button type="button" id="botaoAtualizar" class="botao-atualizar">
+                Atualizar
+            </button>
+
+            <button type="button" id="botaoDeletar" class="botao-deletar">
+                Deletar
+            </button>
+
+        </div>
+
+    </div>
+</div>
+
 <script src="js/script.js"></script>
 
 </body>
