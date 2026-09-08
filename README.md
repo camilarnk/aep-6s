@@ -137,9 +137,7 @@ target/site/jacoco/index.html
 
 Abra o arquivo `index.html` no navegador para visualizar as estatísticas de cobertura, incluindo linhas, métodos e classes.
 
-A AEP estabelece como requisito uma cobertura mínima de **70%** sobre o código da PoC apresentado em cada entrega.
-
-Evidência da cobertura obtida nesta entrega:
+A AEP estabelece como requisito uma cobertura mínima de 70% em cada entrega. A cobertura desta versão é apresentada no relatório do JaCoCo abaixo:
 
 ![Relatorio de cobertura dos testes](docs/evidencias/cobertura-jacoco.png)
 
@@ -196,4 +194,8 @@ http://localhost:8080
 
 ## 🏷️ Versões da entrega
 
-A versão correspondente à primeira entrega da AEP será identificada no repositório GitHub por uma tag específica, permitindo consultar exatamente o estado do projeto apresentado nesta etapa.
+A primeira entrega da AEP está identificada no repositório pela tag:
+
+```text
+entrega-1
+```
